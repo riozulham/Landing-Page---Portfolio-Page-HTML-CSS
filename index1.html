@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h3>Rio Zulham</h3>
+      </div>
+
+      <ul class="links">
+        <li>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- content -->
+    <section class="content">
+      <div class="text">
+        <h1>Hello, I'm Rio Zulham</h1>
+        <div class="role">
+          <span id="typing"></span><span class="cursor"></span>
+        </div>
+        <p>
+          Saya seorang developer yang fokus pada pembuatan aplikasi berbasis web
+          dan desain modern. Landing page ini merupakan portfolio saya untuk
+          menunjukkan hasil karya dan pengalaman saya di dunia teknologi.
+        </p>
+        <a href="#">Lihat Portofolio</a>
+      </div>
+      <div class="image">
+        <img src="img1.png" alt="" />
+      </div>
+    </section>
+
+    <!-- end content  -->
+
+    <script>
+      const roles = ["Web Developer", "Technical Writer"];
+      let index = 0;
+      let charIndex = 0;
+      let typingElement = document.getElementById("typing");
+      let isDeleting = false;
+
+      function typeEffect() {
+        let currentRole = roles[index];
+        if (!isDeleting) {
+          typingElement.textContent = currentRole.substring(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === currentRole.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1500);
+            return;
+          }
+        } else {
+          typingElement.textContent = currentRole.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            index = (index + 1) % roles.length;
+          }
+        }
+
+        setTimeout(typeEffect, isDeleting ? 100 : 150);
+      }
+
+      typeEffect();
+    </script>
+  </body>
+</html>
